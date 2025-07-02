@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Kauvery Hospital Management System',
+  title: 'kammas Hospital Management System',
   description: 'Comprehensive healthcare management system',
   generator: 'Kauvery Hospital',
 }
