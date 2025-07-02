@@ -103,7 +103,7 @@ export default function Dashboard() {
         {/* Hero Section */}
         <div className="hero-section rounded-2xl p-8">
           <div className="hero-content">
-            <h1 className="hero-title">Welcome to Kauvery Hospital</h1>
+            <h1 className="hero-title">Welcome to kammas Hospital</h1>
             <p className="hero-subtitle">Comprehensive healthcare management at your fingertips</p>
             
             <div className="cta-buttons">

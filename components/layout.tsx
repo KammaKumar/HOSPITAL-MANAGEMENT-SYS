@@ -123,7 +123,7 @@ export function Layout({ children, userRole }: LayoutProps) {
                 K
               </div>
               <div>
-                <h1 className="text-lg font-bold text-gray-900">Kauvery</h1>
+                <h1 className="text-lg font-bold text-gray-900">Kammas</h1>
                 <p className="text-xs text-gray-600">Hospital</p>
               </div>
             </div>
