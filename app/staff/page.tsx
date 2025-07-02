@@ -74,57 +74,60 @@ export default function StaffPage() {
       value: "156",
       icon: Users,
       color: "text-blue-600",
+      bgColor: "bg-blue-100",
     },
     {
       title: "Active Today",
       value: "142",
       icon: UserCheck,
       color: "text-green-600",
+      bgColor: "bg-green-100",
     },
     {
       title: "On Leave",
       value: "8",
       icon: Clock,
       color: "text-yellow-600",
+      bgColor: "bg-yellow-100",
     },
   ]
 
   return (
     <Layout userRole={userRole}>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold">Staff Management</h1>
-            <p className="text-muted-foreground">Manage hospital staff and employees</p>
+            <h1 className="text-3xl font-bold text-gray-900">Staff Management</h1>
+            <p className="text-gray-600 mt-2">Manage hospital staff and employees</p>
           </div>
           <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
             <DialogTrigger asChild>
-              <Button>
+              <Button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
                 <Plus className="mr-2 h-4 w-4" />
                 Add Staff
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[600px]">
               <DialogHeader>
-                <DialogTitle>Add New Staff Member</DialogTitle>
+                <DialogTitle className="text-pink-600">Add New Staff Member</DialogTitle>
                 <DialogDescription>Enter staff information to create a new employee record.</DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="Enter first name" />
+                    <Input id="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="Enter first name" className="border-gray-200 focus:border-pink-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Enter last name" />
+                    <Input id="lastName" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Enter last name" className="border-gray-200 focus:border-pink-500" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="role">Role</Label>
                     <Select>
-                      <SelectTrigger>
+                      <SelectTrigger className="border-gray-200">
                         <SelectValue placeholder="Select role" />
                       </SelectTrigger>
                       <SelectContent>
@@ -139,7 +142,7 @@ export default function StaffPage() {
                   <div className="space-y-2">
                     <Label htmlFor="department">Department</Label>
                     <Select>
-                      <SelectTrigger>
+                      <SelectTrigger className="border-gray-200">
                         <SelectValue placeholder="Select department" />
                       </SelectTrigger>
                       <SelectContent>
@@ -156,18 +159,18 @@ export default function StaffPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" placeholder="Enter phone number" />
+                    <Input id="phone" placeholder="Enter phone number" className="border-gray-200 focus:border-pink-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Enter email" />
+                    <Input id="email" type="email" placeholder="Enter email" className="border-gray-200 focus:border-pink-500" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="shift">Shift</Label>
                     <Select>
-                      <SelectTrigger>
+                      <SelectTrigger className="border-gray-200">
                         <SelectValue placeholder="Select shift" />
                       </SelectTrigger>
                       <SelectContent>
@@ -179,7 +182,7 @@ export default function StaffPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="salary">Salary</Label>
-                    <Input id="salary" placeholder="Enter annual salary" />
+                    <Input id="salary" placeholder="Enter annual salary" className="border-gray-200 focus:border-pink-500" />
                   </div>
                 </div>
               </div>
@@ -207,6 +210,7 @@ export default function StaffPage() {
                       alert("Failed to add staff")
                     }
                   }}
+                  className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
                 >
                   Add Staff Member
                 </Button>
@@ -216,39 +220,43 @@ export default function StaffPage() {
         </div>
 
         {/* Stats */}
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {stats.map((stat, index) => (
-            <Card key={index}>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-                <stat.icon className={`h-4 w-4 ${stat.color}`} />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stat.value}</div>
+            <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-gray-600">{stat.title}</p>
+                    <p className="text-3xl font-bold text-gray-900 mt-2">{stat.value}</p>
+                  </div>
+                  <div className={`p-3 rounded-full ${stat.bgColor}`}>
+                    <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
         {/* Search and Filters */}
-        <Card>
+        <Card className="bg-white border-0 shadow-lg">
           <CardHeader>
-            <CardTitle>Search Staff</CardTitle>
+            <CardTitle className="text-pink-600">Search Staff</CardTitle>
             <CardDescription>Find staff members by name, ID, or department</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                 <Input
                   placeholder="Search by name, ID, or department..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-8"
+                  className="pl-10 border-gray-200 focus:border-pink-500"
                 />
               </div>
               <Select>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[180px] border-gray-200">
                   <SelectValue placeholder="Filter by role" />
                 </SelectTrigger>
                 <SelectContent>
@@ -259,7 +267,7 @@ export default function StaffPage() {
                 </SelectContent>
               </Select>
               <Select>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[180px] border-gray-200">
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -274,9 +282,9 @@ export default function StaffPage() {
         </Card>
 
         {/* Staff Table */}
-        <Card>
+        <Card className="bg-white border-0 shadow-lg">
           <CardHeader>
-            <CardTitle>Staff Directory</CardTitle>
+            <CardTitle className="text-pink-600">Staff Directory</CardTitle>
             <CardDescription>{staff.length} staff members found</CardDescription>
           </CardHeader>
           <CardContent>
@@ -295,12 +303,12 @@ export default function StaffPage() {
               </TableHeader>
               <TableBody>
                 {staff.map((member) => (
-                  <TableRow key={member._id}>
+                  <TableRow key={member._id} className="hover:bg-gray-50">
                     <TableCell className="font-medium">{member._id}</TableCell>
                     <TableCell>
                       <div>
-                        <div className="font-medium">{member.name}</div>
-                        <div className="text-sm text-muted-foreground">Joined: {member.joinDate}</div>
+                        <div className="font-medium text-gray-900">{member.name}</div>
+                        <div className="text-sm text-gray-500">Joined: {member.joinDate}</div>
                       </div>
                     </TableCell>
                     <TableCell>
@@ -309,8 +317,8 @@ export default function StaffPage() {
                     <TableCell>{member.department}</TableCell>
                     <TableCell>
                       <div className="text-sm">
-                        <div>{member.phone}</div>
-                        <div className="text-muted-foreground">{member.email}</div>
+                        <div className="text-gray-900">{member.phone}</div>
+                        <div className="text-gray-500">{member.email}</div>
                       </div>
                     </TableCell>
                     <TableCell>{member.shift}</TableCell>
@@ -319,13 +327,13 @@ export default function StaffPage() {
                     </TableCell>
                     <TableCell>
                       <div className="flex gap-2">
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="icon" className="hover:bg-pink-50 hover:text-pink-600">
                           <Eye className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="icon" className="hover:bg-pink-50 hover:text-pink-600">
                           <Edit className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="icon" className="hover:bg-pink-50 hover:text-pink-600">
                           <Calendar className="h-4 w-4" />
                         </Button>
                       </div>

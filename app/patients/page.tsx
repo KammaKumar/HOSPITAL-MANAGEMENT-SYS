@@ -121,76 +121,76 @@ export default function PatientsPage() {
         {/* Header */}
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold kauvery-text-pink">Patient Management</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Patient Management</h1>
             <p className="text-gray-600 mt-2">Manage patient records and information</p>
           </div>
           <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="btn-primary">
+              <Button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
                 <Plus className="mr-2 h-4 w-4" />
                 Add Patient
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[600px]">
               <DialogHeader>
-                <DialogTitle className="kauvery-text-pink">Add New Patient</DialogTitle>
+                <DialogTitle className="text-pink-600">Add New Patient</DialogTitle>
                 <DialogDescription>Enter patient information to create a new record.</DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="Enter first name" ref={firstNameRef} className="form-input" />
+                    <Input id="firstName" placeholder="Enter first name" ref={firstNameRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Enter last name" ref={lastNameRef} className="form-input" />
+                    <Input id="lastName" placeholder="Enter last name" ref={lastNameRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="age">Age</Label>
-                    <Input id="age" type="number" placeholder="Enter age" ref={ageRef} className="form-input" />
+                    <Input id="age" type="number" placeholder="Enter age" ref={ageRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="gender">Gender</Label>
-                    <Input id="gender" placeholder="Enter gender" ref={genderRef} className="form-input" />
+                    <Input id="gender" placeholder="Enter gender" ref={genderRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" placeholder="Enter phone number" ref={phoneRef} className="form-input" />
+                    <Input id="phone" placeholder="Enter phone number" ref={phoneRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Enter email" ref={emailRef} className="form-input" />
+                    <Input id="email" type="email" placeholder="Enter email" ref={emailRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="bloodGroup">Blood Group</Label>
-                    <Input id="bloodGroup" placeholder="Enter blood group" ref={bloodGroupRef} className="form-input" />
+                    <Input id="bloodGroup" placeholder="Enter blood group" ref={bloodGroupRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="emergencyContact">Emergency Contact</Label>
-                    <Input id="emergencyContact" placeholder="Enter emergency contact" ref={emergencyContactRef} className="form-input" />
+                    <Input id="emergencyContact" placeholder="Enter emergency contact" ref={emergencyContactRef} className="border-gray-200 focus:border-pink-500" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="address">Address</Label>
-                  <Textarea id="address" placeholder="Enter full address" ref={addressRef} className="form-input" />
+                  <Textarea id="address" placeholder="Enter full address" ref={addressRef} className="border-gray-200 focus:border-pink-500" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="medicalHistory">Medical History</Label>
-                  <Textarea id="medicalHistory" placeholder="Enter medical history" ref={medicalHistoryRef} className="form-input" />
+                  <Textarea id="medicalHistory" placeholder="Enter medical history" ref={medicalHistoryRef} className="border-gray-200 focus:border-pink-500" />
                 </div>
               </div>
               <DialogFooter>
                 <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
                   Cancel
                 </Button>
-                <Button onClick={handleAddPatient} className="btn-primary">Add Patient</Button>
+                <Button onClick={handleAddPatient} className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">Add Patient</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -199,7 +199,7 @@ export default function PatientsPage() {
         {/* Stats */}
         <div className="grid gap-6 md:grid-cols-3">
           {stats.map((stat, index) => (
-            <Card key={index} className="doctor-card bg-white border-0 shadow-lg">
+            <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -218,7 +218,7 @@ export default function PatientsPage() {
         {/* Search and Filters */}
         <Card className="bg-white border-0 shadow-lg">
           <CardHeader>
-            <CardTitle className="kauvery-text-pink">Search Patients</CardTitle>
+            <CardTitle className="text-pink-600">Search Patients</CardTitle>
             <CardDescription>Find patients by name or ID</CardDescription>
           </CardHeader>
           <CardContent>
@@ -229,11 +229,11 @@ export default function PatientsPage() {
                   placeholder="Search by name or patient ID..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="search-bar pl-10"
+                  className="pl-10 border-gray-200 focus:border-pink-500"
                 />
               </div>
               <Select>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[180px] border-gray-200">
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -250,7 +250,7 @@ export default function PatientsPage() {
         {/* Patients Table */}
         <Card className="bg-white border-0 shadow-lg">
           <CardHeader>
-            <CardTitle className="kauvery-text-pink">Patient Records</CardTitle>
+            <CardTitle className="text-pink-600">Patient Records</CardTitle>
             <CardDescription>{filteredPatients.length} patients found</CardDescription>
           </CardHeader>
           <CardContent>

@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -29,7 +28,6 @@ import {
   Bell,
   Menu,
   LogOut,
-  User,
   Search,
   Phone,
   ChevronDown,
@@ -98,11 +96,12 @@ export function Layout({ children, userRole }: LayoutProps) {
           key={item.name}
           href={item.href}
           className={cn(
-            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors nav-link",
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
             pathname === item.href
-              ? "bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted",
+              ? "bg-pink-100 text-pink-700 border-r-2 border-pink-600"
+              : "text-gray-600 hover:text-pink-600 hover:bg-pink-50",
           )}
+          prefetch={true}
         >
           <item.icon className="h-4 w-4" />
           {item.name}
@@ -114,13 +113,13 @@ export function Layout({ children, userRole }: LayoutProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="header-nav sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <div className="logo-container">
-              <div className="logo-icon">
-                K
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">K</span>
               </div>
               <div>
                 <h1 className="text-lg font-bold text-gray-900">Kammas</h1>
@@ -130,14 +129,14 @@ export function Layout({ children, userRole }: LayoutProps) {
 
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-1">
-              <Link href="/" className="nav-link">About</Link>
-              <Link href="/doctors" className="nav-link">Centers of Excellence</Link>
-              <Link href="/appointments" className="nav-link">Specialities</Link>
-              <Link href="/patients" className="nav-link">Locations</Link>
-              <Link href="/staff" className="nav-link">Health Packages</Link>
-              <Link href="/finance" className="nav-link">Patients Portal</Link>
-              <Link href="/reports" className="nav-link">Blog & Journal</Link>
-              <Link href="/reports" className="nav-link">News & Events</Link>
+              <Link href="/" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">About</Link>
+              <Link href="/doctors" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">Centers of Excellence</Link>
+              <Link href="/appointments" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">Specialities</Link>
+              <Link href="/patients" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">Locations</Link>
+              <Link href="/staff" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">Health Packages</Link>
+              <Link href="/finance" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">Patients Portal</Link>
+              <Link href="/reports" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">Blog & Journal</Link>
+              <Link href="/reports" className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-600 transition-colors">News & Events</Link>
             </nav>
 
             {/* Right side actions */}
@@ -147,22 +146,22 @@ export function Layout({ children, userRole }: LayoutProps) {
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                 <Input
                   placeholder="Search"
-                  className="search-bar pl-10"
+                  className="pl-10 w-64 bg-gray-50 border-gray-200 focus:bg-white"
                 />
               </div>
 
               {/* Action Buttons */}
-              <Button className="btn-outline hidden md:inline-flex">
+              <Button variant="outline" className="hidden md:inline-flex border-pink-200 text-pink-600 hover:bg-pink-50">
                 Find Doctor
               </Button>
-              <Button className="btn-outline hidden md:inline-flex">
+              <Button variant="outline" className="hidden md:inline-flex border-pink-200 text-pink-600 hover:bg-pink-50">
                 Book Appointment
               </Button>
               
               {/* Emergency Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button className="emergency-button">
+                  <Button className="bg-red-600 hover:bg-red-700 text-white">
                     <Phone className="h-4 w-4" />
                     Emergency
                     <ChevronDown className="h-4 w-4" />
@@ -198,7 +197,7 @@ export function Layout({ children, userRole }: LayoutProps) {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Button className="btn-primary">
+              <Button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
                 Contact Us
               </Button>
 
@@ -210,12 +209,12 @@ export function Layout({ children, userRole }: LayoutProps) {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="left" className="flex flex-col">
-                  <div className="logo-container mb-6">
-                    <div className="logo-icon">
-                      K
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">K</span>
                     </div>
                     <div>
-                      <h1 className="text-lg font-bold">Kauvery</h1>
+                      <h1 className="text-lg font-bold">Kammas</h1>
                       <p className="text-xs text-gray-600">Hospital</p>
                     </div>
                   </div>
@@ -238,8 +237,13 @@ export function Layout({ children, userRole }: LayoutProps) {
               {/* User menu */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="rounded-full">
-                    <User className="h-5 w-5" />
+                  <Button variant="ghost" className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">
+                        {userRole.charAt(0)}
+                      </span>
+                    </div>
+                    <span className="hidden md:block text-sm font-medium">{userRole}</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -265,12 +269,12 @@ export function Layout({ children, userRole }: LayoutProps) {
         <div className="hidden md:block w-64 bg-white border-r min-h-screen">
           <div className="p-6">
             <div className="flex items-center gap-3 mb-8">
-              <div className="logo-icon">
-                HMS
+              <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold">HMS</span>
               </div>
               <div>
                 <h2 className="font-bold text-gray-900">Hospital MS</h2>
-                <Badge variant="secondary" className="text-xs">
+                <Badge variant="secondary" className="text-xs bg-pink-100 text-pink-700">
                   {userRole}
                 </Badge>
               </div>
@@ -278,21 +282,6 @@ export function Layout({ children, userRole }: LayoutProps) {
             <nav className="space-y-2">
               <NavItems />
             </nav>
-          </div>
-          
-          {/* User info at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-gray-50">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                <User className="h-4 w-4 text-primary-foreground" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900">Dr. Admin</p>
-                <Badge variant="secondary" className="text-xs">
-                  {userRole}
-                </Badge>
-              </div>
-            </div>
           </div>
         </div>
 
